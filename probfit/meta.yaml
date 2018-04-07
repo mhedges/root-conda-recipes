@@ -10,6 +10,7 @@ build:
 
 requirements:
   build:
+    - numpy
     - python
     - setuptools
     - iminuit
