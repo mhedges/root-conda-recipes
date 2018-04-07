@@ -1,0 +1,15 @@
+package:
+  name: probfit
+
+source:
+  git_tag: master
+  git_url: https://github.com/mhedges/probfit.git
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - iminuit
