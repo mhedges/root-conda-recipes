@@ -1,0 +1,47 @@
+{% set name = "uproot" %}
+{% set version = "2.8.16" %}
+{% set file_ext = "tar.gz" %}
+{% set hash_type = "sha256" %}
+{% set hash_value = "d42872d750174273d5183e232821b15bc02e35262c60353aa70247c175d7eb6c" %}
+
+package:
+  name: '{{ name|lower }}'
+  version: '{{ version }}'
+
+source:
+  fn: '{{ name }}-{{ version }}.{{ file_ext }}'
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ file_ext }}
+  '{{ hash_type }}': '{{ hash_value }}'
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+requirements:
+  host:
+    - python
+    - setuptools
+    - numpy
+  run:
+    - python
+    - numpy
+
+test:
+  imports:
+    - uproot
+    - uproot._connect
+    - uproot.cache
+    - uproot.interp
+    - uproot.source
+
+about:
+  home: https://github.com/scikit-hep/uproot
+  license: BSD License
+  license_family: BSD
+  license_file: ''
+  summary: ROOT I/O in pure Python and Numpy.
+  doc_url: ''
+  dev_url: ''
+
+extra:
+  recipe-maintainers: ''
