@@ -1,16 +1,19 @@
 package:
   name: probfit
+  version: 1.0.5
 
 source:
-  git_tag: master
-  git_url: https://github.com/mhedges/probfit.git
+  git_url: https://github.com/iminuit/probfit.git
 
 build:
   number: 1
+  script: python setup.py install --single-version-externally-managed --record=record.txt
 
 requirements:
-  build:
-    - numpy
+  host:
     - python
     - setuptools
-    - iminuit
+    - numpy
+  run:
+    - python
+    - numpy
